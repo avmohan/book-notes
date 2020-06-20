@@ -78,7 +78,15 @@
   - Scaling challenge is not due to tweet volume, but due to fan-out - each user follows many people and each user is followed by many people.
   - 2 ways of doing it, and the hybrid approach.
 
-TODO: Brush up on sql, solve hackerrank challenges.
+    - Posting a tweet simply inserts the new tweet into a global collection of tweets. When a user requests their home timeliine, look up all the people they follow, find all the tweets for each of those users, and merge them (sorted by time).
+
+      ![Approach-1](images/chap1/img1.png)
+
+    - Maintain a cache for each user's timeliine. When a user posts a tweet, look up all the people who follow that user, and insert the new tweet into each of their home timeline caches.
+
+      ![Approach-2](images/chap1/img2.png)
+
+  - Initially twitter used first approach, later they used second approach. The reason the second approach is better is because home timeline is much more frequent (2 orders of magnitude) than post tweet. One downside of 2nd approach is that posting a tweet requires a lot of extra work, especially for celebrity accounts with huge number of followers (some users have 30m followers). So a hybrid approach is considered where for celebrity accounts only, the publish does not trigger cache write but is separately computed at load time whenever a follower requests a home timeline load.
 
 ### 1.2.2. Describing performance
 
