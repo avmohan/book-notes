@@ -13,6 +13,8 @@
     - [1.3.2. Simplicity](#132-simplicity)
     - [1.3.3. Evolvability: Making change easy](#133-evolvability-making-change-easy)
 
+---
+
 # 1. Reliable, scalable, and maintainable applications
 
 - Data-intensive vs compute-intensive: Former means the primary challenge is quantity/complexity of data, or the speed at which it is changing as opposed to being bottlenecked by cpu cycles.
@@ -74,6 +76,7 @@
 - Load parameters:
   - Choice of load parameters depend upon the architecture of the system. Examples: requests per second in a webserver, ratio of reads to writes in a database, number of simultaneously active users in a chat room, hit rate of a cache, etc.
 - Twitter example
+
   - Need to support post tweet, and home timeline operations.
   - Scaling challenge is not due to tweet volume, but due to fan-out - each user follows many people and each user is followed by many people.
   - 2 ways of doing it, and the hybrid approach.
@@ -136,3 +139,53 @@
 
 - System requirements change as previous unanticipated use cases emerge, business priorities change, users request new features, new platforms replace old platforms, legal or regulatory requirements,, growth of the system forces architectural changes etc.
 - _Agile_ working paterns provide a framework for adapting to change. Agility at the scale of large data systems is referred to as _evolvability_.
+
+---
+
+# 2. Data Models and Query Languages
+
+Data model have a high impact, not only on how the software is written but also on how we thing about it.  
+Multiple layers of data models - abstractions  
+preconditions & postconditions - assumptions & guarantees - from lower layer to upper layer  
+exploration of a few data models - relational, document, graph based  
+also some query languages and comparison of their use cases.
+
+## 2.1. Relational Model Versus Document Model 
+
+Relations/tables, tuples/records/rows  
+60s & 70s - why relational won at that time, and the goal of the relational model  
+network model & hierarchical model in 1980s  
+object databases in 1980s & early 90s  
+xml databases in early 2000s - niche adoption  
+relational model generalized very well - most widely used model currently.
+
+### 2.1.1. The Birth of NoSQL
+driving forces
+- Need for greater scalability, larger datasets, higher throughput
+- Preference for FOSS over commercial database
+- Specialized query operations, not well supported by relational
+- More dynamic expressive schema as opposed to restrictive schema of relational
+polyglot persistence  
+
+### 2.1.2. The Object-Relational Mismatch
+
+what is OR mismatch  
+object relational mapping  
+locality in the document schema
+
+### 2.1.3. Many-to-One and Many-to-Many Relationships
+
+
+
+### 2.1.4. Are document databases repeating history
+
+### 2.1.5. Relational Versus Document Databases Today
+
+## 2.2. Query Languages for Data
+
+### 2.2.1. Declarative Queries on the Web
+
+### 2.2.2. MapReduce Querying
+
+## 2.3. Graph-Like Data Models
+
